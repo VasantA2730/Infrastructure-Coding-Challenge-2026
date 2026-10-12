@@ -1,3 +1,38 @@
+# Vasant's submission
+
+This package contains a node `greeter`, which subscribes to two topics
+
+- `/greeting`
+    - The greeting that should be used
+- `/greetee`
+    - Who should be greeted
+
+Once values have been passed through both `/greeting` and `/greetee`, a message will be published to `/output` containing the greeting. After this, the greeting and greetee values are reset.
+
+## Build and run
+
+1. Ensure ros is initialized in your shell (`source /opt/ros/lyrical/setup.bash`)
+
+2. Build the package: `colcon build --packages-select infrastructure_coding_challenge_2026`
+
+3. Setup the package: `source .install/setup.bash`
+
+4. Verify you can see the package using `ros2 pkg list`
+
+5. Run the package using `ros2 run infrastructure_coding_challenge_2026 greeter`
+
+## Using the node
+
+1. Create two new terminals, and initialize ros in both
+
+2. In one terminal, listen to the `/output` topic for messages using `ros2 topic echo /output`. After this, switch to the other terminal which doesn't have any process running in it.
+
+3. Send the greeting value through `/greeting` using `ros2 topic pub --once /greeting std_msgs/msg/String "{data: 'yo'}"`
+
+4. Send the greetee value through `/greetee` using `ros2 topic pub --once /greeting std_msgs/msg/String "{data: 'gurt'}"`
+
+5. Observe that in the terminal listening to `/output`, a message should've been sent
+
 # Infrastructure-Coding-Challenge-2026
 
 Hello prospective member!
